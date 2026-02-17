@@ -136,10 +136,11 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 height: auto;
-                overflow: visible;
+                overflow: visible !important;
                 padding-top: 0 !important;
-                /* Reset for print */
                 padding-bottom: 0 !important;
+                display: block !important;
+                /* Fix blank pages */
             }
 
             .no-print {
@@ -147,27 +148,33 @@
             }
 
             .main-container {
-                display: block;
-                height: auto;
-                overflow: visible;
+                display: block !important;
+                /* Fix blank pages */
+                height: auto !important;
+                overflow: visible !important;
             }
 
             .editor-panel {
-                display: none;
+                display: none !important;
             }
 
             .preview-panel {
-                display: block;
-                height: auto;
-                overflow: visible;
-                padding: 0;
+                display: block !important;
+                /* Fix blank pages */
+                height: auto !important;
+                overflow: visible !important;
+                padding: 0 !important;
                 background: white;
+                position: static !important;
             }
 
             .preview-content {
+                display: block !important;
+                /* Fix blank pages */
                 overflow: visible !important;
                 height: auto !important;
                 padding: 0 !important;
+                position: static !important;
             }
 
             .mobile-tab-bar {
@@ -175,14 +182,21 @@
             }
 
             .print-container {
-                width: 100%;
-                max-width: 210mm;
-                min-height: 297mm;
-                padding: 0;
-                margin: 0;
-                border: none;
-                box-shadow: none;
+                width: 100% !important;
+                max-width: none !important;
+                /* Release width */
+                min-height: 0 !important;
+                /* Release height */
+                height: auto !important;
+                /* Allow growth */
+                transform: none !important;
+                /* Reset scale */
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
                 overflow: visible !important;
+                position: static !important;
             }
 
             /* Table Break Logic */
@@ -679,7 +693,7 @@
                         </div>
 
                         {/* SCROLLABLE INVOICE AREA */}
-                        <div className="preview-content flex-1 overflow-x-hidden md:overflow-y-auto flex flex-col items-center p-4 md:p-8 pb-24 md:pb-20">
+                        <div className="preview-content flex-1 overflow-x-hidden overflow-y-auto flex flex-col items-center p-4 md:p-8 pb-24 md:pb-20">
                             <div className="print-container w-[210mm] min-h-[297mm] bg-white shadow-2xl p-[15mm] flex flex-col relative text-stone-800 transition-transform duration-300 origin-top bg-white mb-8"
                                 style={{ transform: `scale(${scale})`, transformOrigin: 'top center' }}>
 
